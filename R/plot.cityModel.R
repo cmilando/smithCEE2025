@@ -16,7 +16,7 @@ plot.cityModel <- function(x, feature = NA,
 
   # Validation
   if(is.na(feature)) {
-    cat(" > No feature selected, plotting cell id ...\n")
+    message("No feature selected, plotting cell id")
     feature = 'id'
   }
   stopifnot(feature %in% colnames(x$features))

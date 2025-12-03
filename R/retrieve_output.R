@@ -17,7 +17,7 @@ retrieve_output <- function() {
   city_name <- 'boston'
 
   # give back an S3 object
-  cat(paste0(" > city: ", city_name, ""))
+  cat(paste0(" city: ", city_name, ","))
 
   # -------------------------------
   # NOTE TO CHAD: right now this assumes that
@@ -28,7 +28,7 @@ retrieve_output <- function() {
   # *****
   # shp <- geojsonsf::geojson_sf(paste0("geoJSON/",city_name,".geojson"))
   # *****
-  cat(" > load shapefile ...")
+  cat(" load shapefile ...")
   # data("boston_shp")
   shp <- boston_shp
 
@@ -52,7 +52,7 @@ retrieve_output <- function() {
   # *****
   # shp_features <- readRDS(paste0("hex/", city_name,"_hex.RDS"))
   # *****
-  cat(" > load data ...")
+  cat(" , load data ...")
   # data("boston_data")
   shp_features <- boston_data
   setDT(shp_features)
@@ -64,7 +64,7 @@ retrieve_output <- function() {
   # again, this will be a dataset input
   # but now we can calculate them directly
   # city_coef <- readRDS(paste0("coefficients/", city_name, "_coef.RDS"))
-  cat(" > load coefficients ...")
+  cat(", load coefficients ...")
   # data("station_data")
   fit <- lm(temp_obs_C ~ tree_fraction + albedo + wind_m_s + wtr_dist_m +
               solar_w_m2 + max_temp_daymet_C + hod + I(hod^2),
@@ -73,7 +73,7 @@ retrieve_output <- function() {
 
   # -------------------------------
   # Prepare the city-model object
-  cat(" > done\n")
+  cat(", done\n")
   x <- list(
     city_name          = city_name,
     shapefile          = shp,          # sf object
