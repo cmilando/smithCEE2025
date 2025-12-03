@@ -16,5 +16,5 @@ devtools::install_github("cmilando/smithCEE2025")
 This vignette describes usage
 ```
 library(smithCEE2025)
-vignette("boston_tree_cover", package = "smithCEE2025")
+vignette("boston_tree_cover")
 ```
