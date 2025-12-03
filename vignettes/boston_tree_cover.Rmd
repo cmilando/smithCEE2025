@@ -1,5 +1,5 @@
 ---
-title: "bos Tree Cover"
+title: "Impacts of Boston Tree Cover Changes on Air Temperature"
 output:
   rmarkdown::html_vignette:
     fig.retina: 2
@@ -70,7 +70,7 @@ plot(tree_raster)
 ```
 
 Now, pass this in and see the difference it makes for air temperature.
-this will add `air_temp_baseline`, `air_temp_modified`, and `air_temp_diff` (defined as modified - baseline)
+this will add `air_temp_baseline` and `air_temp_modified` as a result of the changes that were made.
 ```{r feature_change}
 new_bos <- what_if(bos, 'tree_fraction', tree_raster)
 
@@ -82,7 +82,7 @@ plot(new_bos, "air_temp_baseline", hod = 14, doy = 153)
 plot(new_bos, "air_temp_modified", hod = 14, doy = 153)
 ```
 
-Slightly cooler - nice!
+Slightly cooler - nice! But a little hard to see ...
 
 If you want to do your own calculations and plot, here's how
 ```{r calc, fig.height=5, fig.width=5}
@@ -100,4 +100,5 @@ If you want to do your own calculations and plot, here's how
   # and then plot
   plot(new_bos, "air_temp_pdiff", hod = 14, doy = 153)
 ```
+
 Now its easier to see where the differences are for a specific day
