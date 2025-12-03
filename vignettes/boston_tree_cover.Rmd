@@ -1,11 +1,11 @@
 ---
-title: "Boston Tree Cover"
+title: "bos Tree Cover"
 output:
   rmarkdown::html_vignette:
     fig.retina: 2
     dev: svg
 vignette: >
-  %\VignetteIndexEntry{Boston Tree Cover}
+  %\VignetteIndexEntry{bos Tree Cover}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,32 +17,58 @@ knitr::opts_chunk$set(
 )
 ```
 
+A package for the functions in Smith 2025 <doi:doi.org/10.1038/s43247-025-02462-3>. In this vignette, we demonstrate how to use the package to investigate the impact of changes in tree-cover on air temperature.
+
+## Load the data
 ```{r setup}
 library(smithCEE2025)
 ```
 
 Load the data
 ```{r load_data}
-boston <- retrieve_output()
+bos <- retrieve_output()
 ```
 
 Look at the object
 ```{r examine}
-boston
+bos
 ```
 
 You can plot several ways: just by cell id
-```{r plot_base, fig.width=5}
-plot(boston)
+```{r plot_base, fig.height=5, fig.width=5}
+plot(bos)
 ```
 
 Or by a specific feature
-```{r plot_base2, fig.width=5}
-plot(boston, feature = 'albedo_new')
+```{r plot_base2, fig.height=5, fig.width=5}
+plot(bos, feature = 'tree_fraction')
 
 ```
 
 And you can zoom in on a specific day
-```{r plot_base3, fig.width=5}
-plot(boston, feature = 'max_temp_daymet_C', hod = 14, doy = 153)
+```{r plot_base3, fig.height=5, fig.width=5}
+plot(bos, feature = 'max_temp_daymet_C', hod = 14, doy = 153)
 ```
+
+## Load a raster file and make changes
+
+First convert your .tif to a raster object
+```{r read_tif}
+image_path <- system.file("extdata", 
+                          "treeCanopy_sample.tif", 
+                          package = "smithCEE2025")
+tree_raster <- rast(image_path)
+```
+
+Tree canopy in particular should be represented as a proportion and not percent for consistency with data used in model fit
+```{r plot_raster, fig.height=5, fig.width=5}
+plot(tree_raster)
+
+tree_raster <- tree_raster/100
+plot(tree_raster)
+```
+
+Now, pass this in and see the difference it makes for air temperature
+
+
+

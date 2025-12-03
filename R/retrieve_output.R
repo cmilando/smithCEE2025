@@ -7,14 +7,13 @@
 #' @export
 #'
 #' @examples
-retrieve_output <- function() {
+retrieve_output <- function(city_name = 'boston') {
 
   # -------------------------------
   # Validation block
   # city_name = tolower(city_name)
   # data("valid_city_names")
-  # stopifnot(city_name %in% valid_city_names)
-  city_name <- 'boston'
+  stopifnot(city_name %in% valid_city_names)
 
   # give back an S3 object
   cat(paste0(" city: ", city_name, ","))
@@ -69,16 +68,27 @@ retrieve_output <- function() {
   fit <- lm(temp_obs_C ~ tree_fraction + albedo + wind_m_s + wtr_dist_m +
               solar_w_m2 + max_temp_daymet_C + hod + I(hod^2),
             data = station_data)
+
   city_coef <- coef(fit)
+
+  # and make the feature basis
+  cols <- c('tree_fraction', 'albedo', 'wind_m_s', 'wtr_dist_m',
+              'solar_w_m2', 'max_temp_daymet_C', 'hod')
+  feature_basis <- list()
+  for(cc in cols) {
+    feature_basis[[cc]] <- range(station_data[, cc])
+  }
+
 
   # -------------------------------
   # Prepare the city-model object
   cat(", done\n")
   x <- list(
     city_name          = city_name,
-    shapefile          = shp,          # sf object
-    features           = shp_features, # data.frame
-    coefficients       = city_coef     # named numeric
+    shapefile          = shp,            # sf object
+    features           = shp_features,   # data.frame
+    feature_basis      = feature_basis,  # named list
+    coefficients       = city_coef       # named numeric
   )
   class(x) <- "cityModel"
   x
