@@ -1,0 +1,21 @@
+Package: smithCEE2025
+Type: Package
+Title: Smith 2025
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Chad", "Milando",
+      email = "cmilando@bu.edu",
+      role = c("aut", "cre")
+    )
+  )
+Description: A package for the function in Smith 2025 <doi:doi.org/10.1038/s43247-025-02462-3>
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 3.5)
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
