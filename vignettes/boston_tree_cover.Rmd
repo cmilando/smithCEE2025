@@ -52,7 +52,8 @@ plot(bos, feature = 'max_temp_daymet_C', hod = 14, doy = 153)
 
 ## Load a raster file and make changes
 
-First convert your .tif to a raster object
+First convert your .tif to a raster object. Note in this example we've already
+clipped it to the Boston extent, but the code doesn't assume that it is clipped.
 ```{r read_tif}
 image_path <- system.file("extdata", 
                           "treeCanopy_sample.tif", 
@@ -68,7 +69,35 @@ tree_raster <- tree_raster/100
 plot(tree_raster)
 ```
 
-Now, pass this in and see the difference it makes for air temperature
+Now, pass this in and see the difference it makes for air temperature.
+this will add `air_temp_baseline`, `air_temp_modified`, and `air_temp_diff` (defined as modified - baseline)
+```{r feature_change}
+new_bos <- what_if(bos, 'tree_fraction', tree_raster)
 
+```
 
+And now look at the change it made
+```{r plot_output1, fig.height=5, fig.width=5}
+plot(new_bos, "air_temp_baseline", hod = 14, doy = 153)
+plot(new_bos, "air_temp_modified", hod = 14, doy = 153)
+```
 
+Slightly cooler - nice!
+
+If you want to do your own calculations and plot, here's how
+```{r calc, fig.height=5, fig.width=5}
+
+  # say diff is new - old
+  new_bos$features$air_temp_diff <- 
+    new_bos$features$air_temp_modified - 
+    new_bos$features$air_temp_baseline
+
+  # and percent diff
+  new_bos$features$air_temp_pdiff <- 
+    new_bos$features$air_temp_diff / 
+    new_bos$features$air_temp_baseline * 100
+  
+  # and then plot
+  plot(new_bos, "air_temp_pdiff", hod = 14, doy = 153)
+```
+Now its easier to see where the differences are for a specific day
