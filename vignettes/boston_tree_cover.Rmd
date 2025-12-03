@@ -18,7 +18,10 @@ knitr::opts_chunk$set(
 library(smithCEE2025)
 ```
 
-```{r load_datasets}
-data("boston_data")
-head(boston_data)
+```{r load_data}
+boston <- retrieve_output()
+```
+
+```{r examine}
+boston
 ```
