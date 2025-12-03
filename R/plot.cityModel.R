@@ -65,14 +65,23 @@ plot.cityModel <- function(x, feature = NA,
   stopifnot(nrow(out) == nrow(x$shapefile))
 
   if(feature == 'id') {
-    ggplot(out) +
+
+    ggplot(out) + theme_classic() +
       geom_sf(data = x$shapefile, linewidth = 1) +
-      geom_sf(fill = 'pink', color = 'white')
+      geom_sf(fill = 'pink', color = 'white') +
+      ggtitle("Boston")
+
   } else {
-    ggplot(out) +
-      geom_sf(data = x$shapefile, linewidth = 1) +
+
+    tt <- paste0("yDay: ", doy, ", ","Hour: ", hod, "")
+    ggplot(out) + theme_classic() +
+      geom_sf(data = x$shapefile, linewidth = 0.25) +
       geom_sf(aes(fill = !!as.symbol(feature)),
-              color = NA, ...)
+              color = NA, ...) +
+      scale_fill_viridis_c() +
+      ggtitle("Boston",
+              subtitle = substitute(italic(tt)))
+
   }
 
 }

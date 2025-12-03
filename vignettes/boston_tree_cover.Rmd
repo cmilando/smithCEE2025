@@ -1,6 +1,9 @@
 ---
 title: "Boston Tree Cover"
-output: rmarkdown::html_vignette
+output:
+  rmarkdown::html_vignette:
+    fig.retina: 2
+    dev: svg
 vignette: >
   %\VignetteIndexEntry{Boston Tree Cover}
   %\VignetteEngine{knitr::rmarkdown}
@@ -18,10 +21,28 @@ knitr::opts_chunk$set(
 library(smithCEE2025)
 ```
 
+Load the data
 ```{r load_data}
 boston <- retrieve_output()
 ```
 
+Look at the object
 ```{r examine}
 boston
+```
+
+You can plot several ways: just by cell id
+```{r plot_base, fig.width=5}
+plot(boston)
+```
+
+Or by a specific feature
+```{r plot_base2, fig.width=5}
+plot(boston, feature = 'albedo_new')
+
+```
+
+And you can zoom in on a specific day
+```{r plot_base3, fig.width=5}
+plot(boston, feature = 'max_temp_daymet_C', hod = 14, doy = 153)
 ```
