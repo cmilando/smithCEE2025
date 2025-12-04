@@ -11,6 +11,8 @@ remotes::install_github("cmilando/smithCEE2025",
                         force = TRUE)
 ```
 
+You may need to install Xquartz to get the vingettes to compile
+
 # Running the package
 
 ```{r v1}
