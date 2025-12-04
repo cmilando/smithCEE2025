@@ -5,7 +5,7 @@ output:
     fig.retina: 2
     dev: svg
 vignette: >
-  %\VignetteIndexEntry{bos Tree Cover}
+  %\VignetteIndexEntry{Impacts of Boston Tree Cover Changes on Air Temperature}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -34,12 +34,19 @@ Look at the object
 bos
 ```
 
-And look specifically at each part
+And look specifically at each part: the features
 ```{r examine2}
 head(bos)
-head(bos$features)
+```
+
+the shapefile
+```{r}
 head(bos$shapefile)
-head(bos$coefficients)
+```
+
+and the coefficients.
+```{r}
+print(bos$coefficients)
 ```
 
 You can plot several ways: just by cell id
