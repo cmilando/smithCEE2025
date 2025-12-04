@@ -7,11 +7,17 @@ Smith, Ian A., Dan Li, David K. Fork, Gregory A. Wellenius, and Lucy R. Hutyra. 
 
 ```
 library(devtools)
-devtools::install_github("cmilando/smithCEE2025", build_vignettes = T)
+devtools::install_github("cmilando/smithCEE2025")
+devtools::build_vignettes("smithCEE2025")
 ```
 
-
 # Running the package
+
+```{r v1}
+vignette("boston_tree_cover")
+```
+
+In case the vignette above doesn't build for some reason ...
 
 In this vignette, we demonstrate how to use the package to investigate the impact of changes in tree-cover on air temperature.
 
