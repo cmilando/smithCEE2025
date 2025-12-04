@@ -6,14 +6,16 @@ Smith, Ian A., Dan Li, David K. Fork, Gregory A. Wellenius, and Lucy R. Hutyra. 
 # Installing the package
 
 ```
-library(devtools)
-devtools::install_github("cmilando/smithCEE2025")
-devtools::build_vignettes("smithCEE2025")
+remotes::install_github("cmilando/smithCEE2025", 
+                        build_vignettes = TRUE, 
+                        force = TRUE)
 ```
 
 # Running the package
 
 ```{r v1}
+library(smithCEE2025)
+vignette(package = "smithCEE2025")
 vignette("boston_tree_cover")
 ```
 
