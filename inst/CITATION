@@ -8,7 +8,7 @@ bibentry(
     person("Wellenius", "Gregory", role = "aut"),
     person("Hutyra", "Lucy", role = "aut")
     ),
-  journal = "Communications Earth \& Environment",
+  journal = "Communications Earth & Environment",
   year = "2025",
   volume = "6",
   number = "1",
