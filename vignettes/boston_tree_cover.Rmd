@@ -34,6 +34,14 @@ Look at the object
 bos
 ```
 
+And look specifically at each part
+```{r examine2}
+head(bos)
+head(bos$features)
+head(bos$shapefile)
+head(bos$coefficients)
+```
+
 You can plot several ways: just by cell id
 ```{r plot_base, fig.height=5, fig.width=5}
 plot(bos)
