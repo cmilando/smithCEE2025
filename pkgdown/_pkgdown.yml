@@ -1,0 +1,15 @@
+url: http://chadmilando.com/smithCEE2025
+
+home:
+  title: Impacts of changes in albedo and tree-cover change on air temperature in Boston, MA
+
+template:
+  bootstrap: 5
+
+authors:
+  Chad Milando:
+    href: https://chadmilando.com
+  Ian Smith:
+  Nik Bates:
+
+

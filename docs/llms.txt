@@ -1,0 +1,54 @@
+# Impacts of albedo and tree cover change on air temperature in Boston, MA
+
+A package for the functions in [Smith
+2025](https://doi.org/10.1038/s43247-025-02462-3)
+
+Smith, Ian A., Dan Li, David K. Fork, Gregory A. Wellenius, and Lucy R.
+Hutyra. “Integrated tree canopy expansion and cool roofs can optimize
+air temperature and heat exposure reductions in Boston.” Communications
+Earth & Environment 6, no. 1 (2025): 507.
+
+## Installing the package
+
+    remotes::install_github("cmilando/smithCEE2025",
+                            build_vignettes = TRUE,
+                            force = TRUE)
+
+You may need to install Xquartz to get the vingettes to compile
+
+## Running the package
+
+See the demo vignette `boston_tree_cover`
+
+    library(smithCEE2025)
+    vignette(package = "smithCEE2025")
+    vignette("boston_tree_cover")
+
+# Package index
+
+## All functions
+
+- [`boston_data`](http://chadmilando.com/smithCEE2025/reference/boston_data.md)
+  : Boston feature data
+- [`boston_shp`](http://chadmilando.com/smithCEE2025/reference/boston_shp.md)
+  : boston shapefile
+- [`hello()`](http://chadmilando.com/smithCEE2025/reference/hello.md) :
+  Hello, World!
+- [`retrieve_output()`](http://chadmilando.com/smithCEE2025/reference/retrieve_output.md)
+  : Retrieve output
+- [`smithCEE2025-package`](http://chadmilando.com/smithCEE2025/reference/smithCEE2025-package.md)
+  [`smithCEE2025`](http://chadmilando.com/smithCEE2025/reference/smithCEE2025-package.md)
+  : Code from Smith 2025 (smithCEE2025)
+- [`station_data`](http://chadmilando.com/smithCEE2025/reference/station_data.md)
+  : Weather station data
+- [`valid_city_names`](http://chadmilando.com/smithCEE2025/reference/valid_city_names.md)
+  : Valid city names
+- [`what_if()`](http://chadmilando.com/smithCEE2025/reference/what_if.md)
+  : Title
+
+# Articles
+
+### All vignettes
+
+- [Impacts of Boston Tree Cover Changes on Air
+  Temperature](http://chadmilando.com/smithCEE2025/articles/smithCEE2025.md):
