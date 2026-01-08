@@ -6,8 +6,6 @@
   : Boston feature data
 - [`boston_shp`](http://chadmilando.com/smithCEE2025/reference/boston_shp.md)
   : boston shapefile
-- [`hello()`](http://chadmilando.com/smithCEE2025/reference/hello.md) :
-  Hello, World!
 - [`retrieve_output()`](http://chadmilando.com/smithCEE2025/reference/retrieve_output.md)
   : Retrieve output
 - [`smithCEE2025-package`](http://chadmilando.com/smithCEE2025/reference/smithCEE2025-package.md)
