@@ -1,6 +1,6 @@
-# boston shapefile
+# Shapefile of Boston grid cells
 
-For every gridcell for every time point, feature data
+Polygons and ids that correspond to \`boston_data\` ids
 
 ## Usage
 
@@ -12,6 +12,10 @@ boston_shp
 
 tbd.
 
-- Cases:
+- id:
 
-  Numeric
+  Numeric, id for each gridcell
+
+- geometry:
+
+  Geometry, spatial geometry for each polygon grid cell

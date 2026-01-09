@@ -3,17 +3,25 @@
 \docType{data}
 \name{valid_city_names}
 \alias{valid_city_names}
-\title{Valid city names}
+\title{Valid city identifiers for the spatial analysis domain}
 \format{
-tbd.
-\describe{
-\item{Cases}{Numeric}
-}
+A character vector of city names.
 }
 \usage{
 valid_city_names
 }
 \description{
-For now, just boston
+A character vector listing the valid city identifiers used in the spatial
+analysis and modeling workflow. These identifiers are used to subset data,
+define spatial domains, and ensure consistency across model inputs and
+validation datasets.
+}
+\details{
+City names are provided in lowercase and correspond to predefined spatial
+domains used in the analysis.
+}
+\examples{
+valid_city_names
+
 }
 \keyword{datasets}

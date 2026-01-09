@@ -1,7 +1,7 @@
 # Impacts of Boston Tree Cover Changes on Air Temperature
 
-A package for the functions in Smith 2025
-<doi:doi.org/10.1038/s43247-025-02462-3>. In this vignette, we
+A package for the functions in [Smith
+2025](https://doi.org/10.1038/s43247-025-02462-3). In this vignette, we
 demonstrate how to use the package to investigate the impact of changes
 in tree-cover on air temperature.
 

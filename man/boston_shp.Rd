@@ -3,17 +3,18 @@
 \docType{data}
 \name{boston_shp}
 \alias{boston_shp}
-\title{boston shapefile}
+\title{Shapefile of Boston grid cells}
 \format{
 tbd.
 \describe{
-\item{Cases}{Numeric}
+\item{id}{Numeric, id for each gridcell}
+\item{geometry}{Geometry, spatial geometry for each polygon grid cell}
 }
 }
 \usage{
 boston_shp
 }
 \description{
-For every gridcell for every time point, feature data
+Polygons and ids that correspond to `boston_data` ids
 }
 \keyword{datasets}
