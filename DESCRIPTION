@@ -22,12 +22,12 @@ Depends:
     sf,
     data.table,
     ggplot2,
-    terra,
-    raster,
     exactextractr
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    terra,
+    raster
 VignetteBuilder: knitr
 RoxygenNote: 7.3.3
 URL: http://chadmilando.com/smithCEE2025/

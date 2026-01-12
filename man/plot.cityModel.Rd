@@ -11,6 +11,10 @@
 
 \item{feature}{a column in the cityModel object to plot}
 
+\item{hod}{hour of day}
+
+\item{doy}{day of year}
+
 \item{...}{other arguments passed to plot}
 }
 \description{

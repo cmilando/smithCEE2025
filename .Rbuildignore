@@ -1,6 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^doc$
+^doc
 ^Meta$
 ^LICENSE\.md$
 ^docs

@@ -9,6 +9,7 @@
 #' @return
 #' @export
 #' @import data.table
+#' @importFrom exactextractr exact_extract
 #'
 #' @examples
 what_if <- function(x, feature, rast, hod = NA, doy = NA) {
@@ -33,7 +34,7 @@ what_if <- function(x, feature, rast, hod = NA, doy = NA) {
   # why is this failing
   # because the tif dimensions have to be correct, need to give
   # failures for that
-  rast_map <- exact_extract(rast, x$shapefile, fun = 'mean')
+  rast_map <- exactextractr::exact_extract(rast, x$shapefile, fun = 'mean')
 
   warning("check basis")
 

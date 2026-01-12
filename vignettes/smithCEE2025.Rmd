@@ -70,6 +70,8 @@ plot(bos, feature = 'max_temp_daymet_C', hod = 14, doy = 153)
 First convert your .tif to a raster object. Note in this example we've already
 clipped it to the Boston extent, but the code doesn't assume that it is clipped.
 ```{r read_tif}
+library(terra)
+library(exactextractr)
 image_path <- system.file("extdata", 
                           "treeCanopy_sample.tif", 
                           package = "smithCEE2025")

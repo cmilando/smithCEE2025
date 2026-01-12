@@ -3,7 +3,7 @@
 #' @param x a cityModel object
 #' @param feature a column in the cityModel object to plot
 #' @param hod hour of day
-#' @param day day of year
+#' @param doy day of year
 #' @param ... other arguments passed to plot
 #'
 #' @return
