@@ -1,4 +1,3 @@
-#'@export
 #' print.cityModel
 #'
 #' @param x a cityModel object
@@ -6,6 +5,7 @@
 #'
 #' @return
 #' @export
+#' @importFrom sf st_geometry_type
 #'
 #' @examples
 print.cityModel <- function(x, ...) {

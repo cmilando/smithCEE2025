@@ -1,10 +1,10 @@
 #' Retrieve output
 #'
 #' @param city_name the name of a city, converts to lowercase
-#' @param clip optional, a shapefile to clip the output to
 #'
 #' @return
 #' @export
+#' @import data.table
 #'
 #' @examples
 retrieve_output <- function(city_name = 'boston') {

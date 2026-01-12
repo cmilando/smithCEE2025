@@ -8,8 +8,6 @@ retrieve_output(city_name = "boston")
 }
 \arguments{
 \item{city_name}{the name of a city, converts to lowercase}
-
-\item{clip}{optional, a shapefile to clip the output to}
 }
 \description{
 Retrieve output

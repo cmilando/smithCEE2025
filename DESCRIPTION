@@ -11,9 +11,9 @@ Authors@R: c(
     person("Dan", "Li", role = "aut"),
     person("David K.", "Fork", role = "aut"),
     person("Gregory A.", "Wellenius", role = "aut"),
-    person("Lucy R.", "Hutyra", role = "cre")
+    person("Lucy R.", "Hutyra", role = "aut")
     )
-Description: A package for the function in Smith 2025 <doi:doi.org/10.1038/s43247-025-02462-3>
+Description: A package for the function in Smith 2025 <doi:doi.org/10.1038/s43247-025-02462-3>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

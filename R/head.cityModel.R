@@ -1,4 +1,3 @@
-#'@export
 #' head.cityModel
 #'
 #' @param x a cityModel object
@@ -6,6 +5,7 @@
 #'
 #' @return
 #' @export
+#' @importFrom utils head
 #'
 #' @examples
 head.cityModel <- function(x, ...) {

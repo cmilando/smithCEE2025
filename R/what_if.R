@@ -1,13 +1,14 @@
-#' Title
+#' what if, scenario development function
 #'
-#' @param x
-#' @param feature
-#' @param raster
-#' @param hod
-#' @param doy
+#' @param x a model object
+#' @param feature which feature column are you exiting
+#' @param rast the raster object
+#' @param hod the hour of the day
+#' @param doy the day of the year
 #'
 #' @return
 #' @export
+#' @import data.table
 #'
 #' @examples
 what_if <- function(x, feature, rast, hod = NA, doy = NA) {

@@ -2,13 +2,21 @@
 % Please edit documentation in R/what_if.R
 \name{what_if}
 \alias{what_if}
-\title{Title}
+\title{what if, scenario development function}
 \usage{
 what_if(x, feature, rast, hod = NA, doy = NA)
 }
 \arguments{
-\item{doy}{}
+\item{x}{a model object}
+
+\item{feature}{which feature column are you exiting}
+
+\item{rast}{the raster object}
+
+\item{hod}{the hour of the day}
+
+\item{doy}{the day of the year}
 }
 \description{
-Title
+what if, scenario development function
 }
