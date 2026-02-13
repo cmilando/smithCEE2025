@@ -22,10 +22,11 @@ what_if <- function(x, feature, rast, hod = NA, doy = NA) {
   stopifnot(inherits(x$shapefile, "sf"))
 
   # Note: for now, just hard_code for tree
-  stopifnot(feature == 'tree_fraction')
+  stopifnot(feature %in% c('albedo', 'tree_fraction'))
 
   # --------------------------------------
   cat(" ... extract raster\n")
+
   # clean and extract raster
   if(any(is.na(as.matrix(rast)))) {
     warning('some NA raster cells are NA')
@@ -36,8 +37,6 @@ what_if <- function(x, feature, rast, hod = NA, doy = NA) {
   # failures for that
   rast_map <- exactextractr::exact_extract(rast, x$shapefile, fun = 'mean')
 
-  warning("check basis")
-
   rast_df <- data.table(id = x$shapefile$id, rast = rast_map)
 
   # subset
@@ -46,6 +45,7 @@ what_if <- function(x, feature, rast, hod = NA, doy = NA) {
     rr <- which(x$features$hod == hod & x$features$doy == doy)
     x$features <- x$features[rr, ]
     x$features <- merge(x$features, xdf, by = c('id'))
+
     # NB: check that you actually put things in that are there
     stopifnot(nrow(x$features) == length(unique(x$shapefile$id)))
 
@@ -55,10 +55,24 @@ what_if <- function(x, feature, rast, hod = NA, doy = NA) {
     xdf <- unique(x$features[, c('id', 'hod', 'doy')])
     xdf <- merge(xdf, rast_df)
     orig_n <- nrow(x$features)
+
     x$features <- merge(x$features, xdf, by = c('id', 'hod', 'doy'))
+
     stopifnot(nrow(x$features) == nrow(xdf))
     stopifnot(nrow(x$features) == orig_n)
 
+  }
+
+  # --------------------------------------
+  cat(" ... check basis\n")
+  # ok so you know that the column is called `rast`
+  # and you know
+  rast_range <- range(x$features$rast)
+  basis_range <- x$feature_basis[[feature]]
+  if(rast_range[1] < basis_range[1] | rast_range[2] > basis_range[2]) {
+    warning('raster range outside of basis range for feature: ', feature, "\n")
+    cat("raster range:", rast_range, '\n')
+    cat("basis range:", basis_range, '\n')
   }
 
   # --------------------------------------
@@ -69,7 +83,6 @@ what_if <- function(x, feature, rast, hod = NA, doy = NA) {
   # --------------------------------------
 
 
-
   # --------------------------------------
   # Now, updated predicted values
   warning('hard-coded matrix variable names')
@@ -78,16 +91,15 @@ what_if <- function(x, feature, rast, hod = NA, doy = NA) {
 
   # *********
   # BASELINE
-  feat_names <- c("tree_fraction" ,         "albedo" ,        "wind_m_s" ,
-                  "wtr_dist_m", "solar_w_m2" ,    "max_temp_daymet_C" ,
+  feat_names <- c("tree_fraction" , "albedo" ,  "wind_m_s" ,
+                  "wtr_dist_m", "solar_w_m2" ,  "max_temp_daymet_C" ,
                   "hod")
+
   X_mat <- subset(x$features, select = feat_names)
+
   X_mat$`I(hod^2)` <- X_mat$hod^2
   X_mat <- cbind(1, X_mat)
   X_mat <- as.matrix(X_mat)
-  head(X_mat)
-  dim(X_mat)
-  dim(xcoef)
 
   ## apply new coefficients
   y_hat <- X_mat %*% xcoef
@@ -103,16 +115,16 @@ what_if <- function(x, feature, rast, hod = NA, doy = NA) {
 
   # *********
   # UPDATED
-  feat_names <- c("rast" ,         "albedo" ,        "wind_m_s" ,
-                  "wtr_dist_m", "solar_w_m2" ,    "max_temp_daymet_C" ,
-                  "hod")
-  X_mat <- subset(x$features, select = feat_names)
+  # first which one are we replacing
+  # then just fill in rast with that
+  rr <- which(feat_names == feature)
+  updated_feat_names <- feat_names
+  updated_feat_names[rr] <- 'rast'
+
+  X_mat <- subset(x$features, select = updated_feat_names)
   X_mat$`I(hod^2)` <- X_mat$hod^2
   X_mat <- cbind(1, X_mat)
   X_mat <- as.matrix(X_mat)
-  head(X_mat)
-  dim(X_mat)
-  dim(xcoef)
 
   ## apply new coefficients
   y_hat <- X_mat %*% xcoef
